@@ -1,0 +1,14 @@
+-botones y sinonios salir con si no cancelar.
+-cuando va a cambar de contraseña desaparesca el login... 
+-validar correo electronico no existente en la base de datos.. 2
+- agregar campo "activo" en la tabla usuario para que al momento de logear por primera vez realize un update luego de cambiar la clave por primera ves y en el nav aparesca el estado de desacivo mientras no realice esta actividad.. 
+- imprimir datos en formulario de perfil
+- poner titulo perfil en formulatio perfil
+ - luego de cambiar la clave salir del formulario.. 
+- Boton actualizar... 
+- Boton Nuevo..
+- boton quitar..
+- agregar observaciones al pedido i grabar enn la base... 
+- cerrar cueneta y cambiar de estado..
+- boton modificar comanda debe regresar todos el detalle de la comanda y el corregir el numero de pedido ojo..... 
+- 
