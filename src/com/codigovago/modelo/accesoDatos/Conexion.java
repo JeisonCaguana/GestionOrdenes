@@ -28,10 +28,10 @@ public class Conexion {
      * @param contrasenaBD
      * @return
      */
-    final String hostBD          = "jdbc:mysql://localhost/";
-    final String nombreBD        = "bd_ordenes"; 
+    final String hostBD          = "jdbc:mysql://sql10.freemysqlhosting.net";
+    final String nombreBD        = "sql10284453"; 
     final String certificadoHOST ="?useTimezone=true&serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true";
-    final String usuarioBD       = "root";
+    final String usuarioBD       = "sql10284453";
     final String contrasenaBD    = ""; 
 
     public Connection getConexion(){ 

@@ -8,6 +8,7 @@ package com.codigovago.vista;
 import com.codigovago.controlador.Roles;
 import com.codigovago.modelo.accesoDatos.CorreoElectronico;
 import com.codigovago.modelo.accesoDatos.Empleados;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +26,7 @@ public class FrmCorreo extends javax.swing.JFrame {
 
     public FrmCorreo() {
         this.setUndecorated(true);
-        initComponents();
+        initComponents(); 
     }
 
     /**
@@ -38,41 +39,32 @@ public class FrmCorreo extends javax.swing.JFrame {
     private void initComponents() {
 
         txtRecibe = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnEnviarCorreo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         fondoCambioClave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtRecibe.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtRecibe.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        txtRecibe.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtRecibe.setBorder(null);
         txtRecibe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRecibeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtRecibe, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 262, -1));
+        getContentPane().add(txtRecibe, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 173, 290, 30));
 
-        jButton1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jButton1.setText("Enviar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEnviarCorreo.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnEnviarCorreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/boton.png"))); // NOI18N
+        btnEnviarCorreo.setContentAreaFilled(false);
+        btnEnviarCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEnviarCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 109, -1));
-
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Ingrese su correo electronico: ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cambio de Contraseña");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        getContentPane().add(btnEnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 310, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -83,21 +75,14 @@ public class FrmCorreo extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 50, 40));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 50, 40));
 
         fondoCambioClave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/fondo4.png"))); // NOI18N
-        getContentPane().add(fondoCambioClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, -1));
+        getContentPane().add(fondoCambioClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        correo.setCorreo(txtRecibe.getText(), "Recuperando clave");
-        this.setVisible(false);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtRecibeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecibeActionPerformed
         // TODO add your handling code here:
@@ -109,16 +94,40 @@ public class FrmCorreo extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnEnviarCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarCorreoActionPerformed
+        ImageIcon error = new ImageIcon(getClass().getResource("../assets/icons/error.png"));
+        ImageIcon mail = new ImageIcon(getClass().getResource("../assets/icons/mail.png"));
+        ImageIcon alerta = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
+
+        if (txtRecibe.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,"Alerta!!\nNo puede generar una nueva contraseña,\nDebe ingresar un correo electrónico..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+        }else{
+            if (correo.existeCorreo(txtRecibe.getText()) == 1){ 
+                if (correo.setCorreo(txtRecibe.getText(), "Clave de Recuperación - Restaurante Ister")) {
+                    JOptionPane.showMessageDialog(null,"Correo de Confirmación\n\nSu clave nueva se a generado con exito,\n verifique su correo electrónico..","Mensaje",JOptionPane.PLAIN_MESSAGE, mail);
+                    txtRecibe.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Alerta!!\nNo puede generar una nueva contraseña, Consulte a su Administrador..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+                    txtRecibe.setText("");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Error!!!\nEl correo ingresado no existe..","REINTENTE!!",JOptionPane.PLAIN_MESSAGE, error);
+                txtRecibe.setText("");
+            }
+        }
+        error = null;
+        mail = null;
+        alerta = null;
+    }//GEN-LAST:event_btnEnviarCorreoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnviarCorreo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel fondoCambioClave;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtRecibe;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,3 +12,6 @@
 - cerrar cueneta y cambiar de estado..
 - boton modificar comanda debe regresar todos el detalle de la comanda y el corregir el numero de pedido ojo..... 
 - 
+
+
+-Dockers.. 

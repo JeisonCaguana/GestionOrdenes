@@ -148,7 +148,6 @@ public final class FrmPlato extends javax.swing.JFrame {
         quitar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         FondoOrden = new javax.swing.JLabel();
 
         btnSeleccionar.setText("Seleccionar");
@@ -388,14 +387,6 @@ public final class FrmPlato extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 150, 200, 380));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 600, -1, -1));
-
         FondoOrden.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         FondoOrden.setForeground(new java.awt.Color(255, 255, 255));
         FondoOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/fondo1.png"))); // NOI18N
@@ -474,10 +465,6 @@ public final class FrmPlato extends javax.swing.JFrame {
         txtObservaciones.setText(tblComanda.getValueAt(fila, 3).toString());
     }//GEN-LAST:event_tblComandaMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-limpiar();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -496,7 +483,6 @@ limpiar();        // TODO add your handling code here:
     private javax.swing.JRadioButton cocina;
     private javax.swing.JPopupMenu grupo1;
     private javax.swing.ButtonGroup grupo_seccion;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

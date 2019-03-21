@@ -16,58 +16,87 @@ import java.sql.SQLException;
  * @author Jeison / Código Vago - www.codigovago.com
  */
 public class ProductosMenu extends Conexion {
-
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    Connection conexion = getConexion();
-
+   
     public String listaProductoMenu(String seccion) {
-        String query = "SELECT prm_nombre FROM producto_menu WHERE seccion ='" + seccion + "' AND prm_disponibilidad='si';";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConexion();
         String[] datos = new String[1];
-        String comboBox = "";
+        String productos = null;        
+        String query = "SELECT prm_nombre FROM producto_menu WHERE seccion ='" + seccion + "' AND prm_disponibilidad='si';";
+        
         try {
             ps = conexion.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                comboBox += datos[0] = rs.getString(1) + ",";
+                productos += datos[0] = rs.getString(1) + ",";
             }
-            return comboBox;
+            return productos;
         } catch (SQLException ex) {
-            System.out.println(ex.toString());
+            ex.toString();
+        }finally{
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
         }
-        return "Sin acceso a datos";
+        return productos;
     }
-
     public int ultimoRegistro() {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConexion();
+        int ban = 0;
         String query = "SELECT MAX(ped_codigo) AS ped_codigo FROM pedido;";
         try {
             ps = conexion.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return (rs.getInt(1) + 1);
+                ban = (rs.getInt(1) + 1);
             }
+            return ban;
         } catch (SQLException e) {
             e.getMessage();
-        }
-        return 0;
+            return ban;
+        }finally{
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
+        } 
     }
-
     public boolean registarMenu(int ped_codigo, String prm_nombre, String det_especificaciones, int det_cantidad,String seccion) {
+        PreparedStatement ps = null; 
+        Connection conexion = getConexion();
+        boolean ban = false;
         double precio = listaPrecioMenu(prm_nombre);
         String query = "INSERT INTO detalle_producto_menu (det_codigo,ped_codigo,prm_nombre,fac_codigo,det_especificaciones,det_cantidad,prm_codigo,precio,seccion) VALUES(null,'" + ped_codigo + "','" + prm_nombre + "',null,'" + det_especificaciones + "'," + det_cantidad + ",null," + precio + ",'"+seccion+"');";
         try {
             ps = conexion.prepareStatement(query);
             ps.execute();
-            return true;
+            ban = true;
+            return ban = true;
         } catch (SQLException evt) {
             System.out.println(evt.getMessage());
-            return false;
+            ban = false;
+            return ban;
+        }finally{
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
         }
+        //cerrar objtos....................................................................
     }
-
     public double listaPrecioMenu(String prm_nombre) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConexion();
         String query = "SELECT precio FROM producto_menu WHERE prm_nombre ='" + prm_nombre + "' AND prm_disponibilidad='si';";
-        double precio = 0.0;
+        double precio = 0;
         try {
             ps = conexion.prepareStatement(query);
             rs = ps.executeQuery();
@@ -76,33 +105,62 @@ public class ProductosMenu extends Conexion {
             }
             return precio;
         } catch (SQLException ex) {
-            System.out.println(ex.toString());
+            ex.toString();
+            return precio;
+        }finally{
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
         }
-        return precio;
     }
-    public int quitaProductoMenu(String prm_nombre) {
-        int ban = 0;
+    public boolean quitaProductoMenu(String prm_nombre) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConexion();
+        boolean ban =false;
         String query = "DELETE FROM detalle_producto_menu WHERE prm_nombre ='" + prm_nombre + "';";
         try {
             ps = conexion.prepareStatement(query);
             ps.execute();
-            return ban = 1;
+            return true;
         } catch (SQLException evt) {
-            return ban = 0;
+            evt.getMessage();
+            return ban;
+        }finally{
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
         }
     }
-    public int actualizaComanda(String prm_nombre, String det_especificaciones, int det_cantidad,int ped_codigo) {
-        int ban = 0;
+    public boolean actualizaComanda(String prm_nombre, String det_especificaciones, int det_cantidad,int ped_codigo) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConexion();
+        boolean ban = false;
         String query = "UPDATE detalle_producto_menu SET prm_nombre='" + prm_nombre + "',det_especificaciones='" + det_especificaciones + "',det_cantidad='" + det_cantidad + "' WHERE ped_codigo='" + ped_codigo + "';";
         try {
             ps = conexion.prepareStatement(query);
             ps.execute();
-            return ban = 1;
+            ban = true;
+            return ban;
         } catch (SQLException evt) {
-            return ban = 0;
+            return ban;
+        }finally{
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
         }
     }
     public int detallaComanda(int ped_codigo) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conexion = getConexion();
         int ban = 0;
         String query = "SELECT det_codigo,det_cantidad,det_especificaciones FROM detalle_producto_menu WHERE ped_codigo='" + ped_codigo + "';";
         String acu  = "";
@@ -118,6 +176,5 @@ public class ProductosMenu extends Conexion {
         } catch (SQLException evt) {
             return ban = 0;
         }
-    }
-    
+    }    
 }

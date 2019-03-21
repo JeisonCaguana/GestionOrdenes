@@ -8,6 +8,8 @@ package com.codigovago.vista;
 import com.codigovago.controlador.Roles;
 import com.codigovago.modelo.FechaHora;
 import com.codigovago.modelo.accesoDatos.Empleados;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,34 +22,33 @@ public final class FrmMesa extends javax.swing.JFrame {
      */
     public static int ban;
     public static int idEmp;
-    
+
     Empleados empleados = new Empleados();
     Roles Roles = new Roles();
     FechaHora horaFecha;
     public FrmMesa() {
         this.setUndecorated(true);
         initComponents();
-        lblNombre.setText("Mesero: "+empleados.buscarDatosUsuario(Roles.idEmpleado));
+        btnUsuario.setText("  Mesero: " + empleados.buscarDatosUsuario(Roles.idEmpleado));
         horaFecha();
     }
-    
+
     void horaFecha() {
         horaFecha = new FechaHora(lblHoraFecha);
         Thread time = new Thread(horaFecha);
         time.start();
     }
-    
+
     void cargarMesa(int ban) {
-        this.ban=ban;
+        this.ban = ban;
         FrmPlato FrmOrden = new FrmPlato();
         FrmOrden.setVisible(true);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnMinimizar = new javax.swing.JButton();
         btnMesa1 = new javax.swing.JButton();
         btnMesa2 = new javax.swing.JButton();
         btnMesa3 = new javax.swing.JButton();
@@ -68,7 +69,6 @@ public final class FrmMesa extends javax.swing.JFrame {
         btnMesa18 = new javax.swing.JButton();
         btnMesa19 = new javax.swing.JButton();
         btnMesa20 = new javax.swing.JButton();
-        lblNombre = new javax.swing.JLabel();
         lblHoraFecha = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnUsuario = new javax.swing.JButton();
@@ -78,16 +78,6 @@ public final class FrmMesa extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1360, 740));
         setMinimumSize(new java.awt.Dimension(1360, 740));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/min.png"))); // NOI18N
-        btnMinimizar.setBorderPainted(false);
-        btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinimizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 40, 50));
 
         btnMesa1.setBorder(null);
         btnMesa1.setBorderPainted(false);
@@ -313,17 +303,16 @@ public final class FrmMesa extends javax.swing.JFrame {
         });
         getContentPane().add(btnMesa20, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, 90, 50));
 
-        lblNombre.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre: Jeison Caguana");
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
-
         lblHoraFecha.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblHoraFecha.setForeground(new java.awt.Color(255, 255, 255));
+        lblHoraFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/relog.png"))); // NOI18N
         lblHoraFecha.setText("13/12/12 - 09:09:09");
-        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
+        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 230, 40));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/salir.png"))); // NOI18N
+        btnSalir.setText("Serrar Sesion");
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setDefaultCapable(false);
@@ -332,24 +321,30 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, 50, 50));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 210, 80));
 
+        btnUsuario.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/descarga.png"))); // NOI18N
+        btnUsuario.setText("Sr(a). Pepito Peres");
+        btnUsuario.setToolTipText("");
+        btnUsuario.setBorder(null);
         btnUsuario.setContentAreaFilled(false);
+        btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 110, 80));
+        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 420, 100));
 
         FondoComanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/Mesas3.png"))); // NOI18N
         getContentPane().add(FondoComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
-        this.setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_btnMinimizarActionPerformed
     private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
         cargarMesa(1);
         this.setVisible(false);
@@ -408,12 +403,15 @@ public final class FrmMesa extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMesa14ActionPerformed
     private void btnMesa15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa15ActionPerformed
-        // TODO add your handling code here:
         cargarMesa(15);
         this.setVisible(false);
     }//GEN-LAST:event_btnMesa15ActionPerformed
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Roles.index();
+        ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/salir.png"));
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea serrar sesión?", "Serrar Sessión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
+        if (input == 0) {
+            Roles.index();
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnMesa20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa20ActionPerformed
@@ -444,8 +442,7 @@ public final class FrmMesa extends javax.swing.JFrame {
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         FrmPerfil perfil = new FrmPerfil();
         idEmp = Roles.idEmpleado;
-        perfil.setVisible(true);
-        this.setVisible(false);
+        perfil.setVisible(true); 
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -470,10 +467,8 @@ public final class FrmMesa extends javax.swing.JFrame {
     private javax.swing.JButton btnMesa7;
     private javax.swing.JButton btnMesa8;
     private javax.swing.JButton btnMesa9;
-    private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnUsuario;
     private javax.swing.JLabel lblHoraFecha;
-    private javax.swing.JLabel lblNombre;
     // End of variables declaration//GEN-END:variables
 }
