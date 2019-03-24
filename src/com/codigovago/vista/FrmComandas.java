@@ -176,19 +176,19 @@ public final class FrmComandas extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         lblPedido.setText("1");
-        getContentPane().add(lblPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
+        getContentPane().add(lblPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 30, -1));
 
         lblFechaComanda.setText("12/12/1232");
-        getContentPane().add(lblFechaComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+        getContentPane().add(lblFechaComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
         lblHoraComanda.setText("12:12:12");
-        getContentPane().add(lblHoraComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+        getContentPane().add(lblHoraComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
         lblMesa.setText("1");
-        getContentPane().add(lblMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+        getContentPane().add(lblMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
         lblMesero.setText("Jeison Caguana");
-        getContentPane().add(lblMesero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        getContentPane().add(lblMesero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
 
         comandaCocina = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
