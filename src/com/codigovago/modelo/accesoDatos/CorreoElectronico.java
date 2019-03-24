@@ -80,16 +80,14 @@ public class CorreoElectronico extends Conexion {
         Session sesion = Session.getDefaultInstance(propiedad);
         String claveNueva = empleados.buscarApellido(correoReceptor) + empleados.numRandom();
         cambioClave(claveNueva, correoReceptor);
-        String correoEnvia = "demovago.ec@gmail.com";
-        String contrasena = "Chavaclass!23";
-        String mensaje = "Estimado: " +empleados.buscarDatosUsuario1(correoReceptor)+"\n" +
+        String correoEnvia = "gestionordenesister@gmail.com";
+        String contrasena = "Ister*2019";
+        String mensaje = "Estimado(a): " +empleados.buscarDatosUsuario1(correoReceptor)+"\n" +
         "Hemos recibido una solicitud para acceder a tu cuenta, a través de tu dirección de correo electrónico. "+
         "\n\n Tu contraseña nueva es:   "+claveNueva+" \n" +
-        "\n" +
-        "Si no has solicitado esta contraseña, no reenvíes este correo electrónico ni des la nueva clave a nadie.\n" +
-        " \n \n" +
+        "\n"+
         "Atentamente,\n" + 
-        "El equipo de Cuentas del Módulo Gestion Ordenes Ister";
+        "Gestion Ordenes Ister 2019";
 
         MimeMessage mail = new MimeMessage(sesion);
         try {

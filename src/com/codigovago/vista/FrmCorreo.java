@@ -100,14 +100,14 @@ public class FrmCorreo extends javax.swing.JFrame {
         ImageIcon alerta = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
 
         if (txtRecibe.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Alerta!!\nNo puede generar una nueva contraseña,\nDebe ingresar un correo electrónico..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+            JOptionPane.showMessageDialog(null,"No puede generar una nueva contraseña,\nDebe ingresar un correo electrónico..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
         }else{
             if (correo.existeCorreo(txtRecibe.getText()) == 1){ 
-                if (correo.setCorreo(txtRecibe.getText(), "Clave de Recuperación - Restaurante Ister")) {
+                if (correo.setCorreo(txtRecibe.getText(), "CLAVE DE RECUPERACIÓN - Gestion Ordenes Ister")) {
                     JOptionPane.showMessageDialog(null,"Correo de Confirmación\n\nSu clave nueva se a generado con exito,\n verifique su correo electrónico..","Mensaje",JOptionPane.PLAIN_MESSAGE, mail);
                     txtRecibe.setText("");
                 }else{
-                    JOptionPane.showMessageDialog(null,"Alerta!!\nNo puede generar una nueva contraseña, Consulte a su Administrador..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+                    JOptionPane.showMessageDialog(null,"No puede generar una nueva contraseña, Consulte a su Administrador..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
                     txtRecibe.setText("");
                 }
             }else{

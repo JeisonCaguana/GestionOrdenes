@@ -43,6 +43,8 @@ public final class FrmMesa extends javax.swing.JFrame {
         this.ban = ban;
         FrmPlato FrmOrden = new FrmPlato();
         FrmOrden.setVisible(true);
+        this.setVisible(false);
+        this.removeAll();
     }
     
     @SuppressWarnings("unchecked")
@@ -83,7 +85,7 @@ public final class FrmMesa extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1360, 740));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnMesa1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMesa1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa1.setForeground(new java.awt.Color(255, 255, 255));
         btnMesa1.setText("1");
         btnMesa1.setBorder(null);
@@ -96,9 +98,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 80, 50));
+        getContentPane().add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 40, 50));
 
-        btnMesa2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMesa2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa2.setForeground(new java.awt.Color(255, 255, 255));
         btnMesa2.setText("2");
         btnMesa2.setBorder(null);
@@ -111,9 +113,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 80, 50));
+        getContentPane().add(btnMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 40, 50));
 
-        btnMesa3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMesa3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa3.setForeground(new java.awt.Color(255, 255, 255));
         btnMesa3.setText("3");
         btnMesa3.setBorder(null);
@@ -126,9 +128,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 80, 50));
+        getContentPane().add(btnMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 40, 50));
 
-        btnMesa4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMesa4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa4.setForeground(new java.awt.Color(255, 255, 255));
         btnMesa4.setText("4");
         btnMesa4.setBorder(null);
@@ -141,9 +143,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 80, 50));
+        getContentPane().add(btnMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 40, 50));
 
-        btnMesa5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMesa5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa5.setForeground(new java.awt.Color(255, 255, 255));
         btnMesa5.setText("5");
         btnMesa5.setBorder(null);
@@ -156,9 +158,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa5ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 80, 50));
+        getContentPane().add(btnMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 40, 50));
 
-        btnMesa6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnMesa6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa6.setForeground(new java.awt.Color(255, 255, 255));
         btnMesa6.setText("6");
         btnMesa6.setBorder(null);
@@ -171,8 +173,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa6ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 80, 50));
+        getContentPane().add(btnMesa6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, 40, 50));
 
+        btnMesa7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa7.setText("7");
         btnMesa7.setBorder(null);
         btnMesa7.setBorderPainted(false);
@@ -184,8 +187,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa7ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 160, 130));
+        getContentPane().add(btnMesa7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 160, 130));
 
+        btnMesa8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa8.setText("8");
         btnMesa8.setBorder(null);
         btnMesa8.setBorderPainted(false);
@@ -197,8 +201,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa8ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, 160, 140));
+        getContentPane().add(btnMesa8, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 160, 130));
 
+        btnMesa9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa9.setText("9");
         btnMesa9.setBorder(null);
         btnMesa9.setBorderPainted(false);
@@ -210,8 +215,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa9ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa9, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 170, 160, 140));
+        getContentPane().add(btnMesa9, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, 160, 130));
 
+        btnMesa10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa10.setText("10");
         btnMesa10.setBorder(null);
         btnMesa10.setBorderPainted(false);
@@ -223,8 +229,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa10ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 160, 110));
+        getContentPane().add(btnMesa10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 160, 120));
 
+        btnMesa11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa11.setText("11");
         btnMesa11.setBorder(null);
         btnMesa11.setBorderPainted(false);
@@ -236,8 +243,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa11ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa11, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 170, 120));
+        getContentPane().add(btnMesa11, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 350, 160, 120));
 
+        btnMesa12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa12.setText("12");
         btnMesa12.setBorder(null);
         btnMesa12.setBorderPainted(false);
@@ -249,8 +257,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa12ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 360, 160, 120));
+        getContentPane().add(btnMesa12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 350, 160, 120));
 
+        btnMesa13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa13.setText("13");
         btnMesa13.setBorder(null);
         btnMesa13.setBorderPainted(false);
@@ -262,97 +271,117 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa13ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 460, 180));
+        getContentPane().add(btnMesa13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 520, 450, 170));
 
+        btnMesa14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa14.setText("14           ");
         btnMesa14.setBorder(null);
         btnMesa14.setBorderPainted(false);
         btnMesa14.setContentAreaFilled(false);
         btnMesa14.setDefaultCapable(false);
         btnMesa14.setFocusable(false);
-        btnMesa14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         btnMesa14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa14.setInheritsPopupMenu(true);
         btnMesa14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa14ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 600, 140, 60));
+        getContentPane().add(btnMesa14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 600, 110, 50));
 
+        btnMesa15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa15.setText("15           ");
         btnMesa15.setBorder(null);
         btnMesa15.setBorderPainted(false);
         btnMesa15.setContentAreaFilled(false);
+        btnMesa15.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         btnMesa15.setDefaultCapable(false);
-        btnMesa15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         btnMesa15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa15.setInheritsPopupMenu(true);
+        btnMesa15.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnMesa15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa15ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 530, 140, 60));
+        getContentPane().add(btnMesa15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 530, 110, 60));
 
+        btnMesa16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa16.setText("16           ");
         btnMesa16.setBorder(null);
         btnMesa16.setContentAreaFilled(false);
-        btnMesa16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnMesa16.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         btnMesa16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa16.setInheritsPopupMenu(true);
+        btnMesa16.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnMesa16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa16ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 460, 140, 60));
+        getContentPane().add(btnMesa16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 460, 110, 60));
 
+        btnMesa17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa17.setText("17           ");
         btnMesa17.setBorder(null);
         btnMesa17.setContentAreaFilled(false);
-        btnMesa17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnMesa17.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         btnMesa17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa17.setInheritsPopupMenu(true);
+        btnMesa17.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnMesa17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa17ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 400, 140, 50));
+        getContentPane().add(btnMesa17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 400, 110, 50));
 
+        btnMesa18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa18.setText("18           ");
         btnMesa18.setBorder(null);
         btnMesa18.setContentAreaFilled(false);
-        btnMesa18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnMesa18.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         btnMesa18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa18.setInheritsPopupMenu(true);
+        btnMesa18.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnMesa18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa18ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 330, 140, 60));
+        getContentPane().add(btnMesa18, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 330, 110, 60));
 
+        btnMesa19.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa19.setText("19           ");
         btnMesa19.setBorder(null);
         btnMesa19.setContentAreaFilled(false);
-        btnMesa19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnMesa19.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         btnMesa19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa19.setInheritsPopupMenu(true);
+        btnMesa19.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnMesa19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa19ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 270, 140, 50));
+        getContentPane().add(btnMesa19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 270, 110, 50));
 
+        btnMesa20.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa20.setText("20           ");
         btnMesa20.setBorder(null);
         btnMesa20.setContentAreaFilled(false);
-        btnMesa20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnMesa20.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
         btnMesa20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMesa20.setInheritsPopupMenu(true);
+        btnMesa20.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         btnMesa20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMesa20ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 200, 140, 60));
+        getContentPane().add(btnMesa20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 200, 110, 60));
 
+        btnMesa21.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa21.setText("21");
         btnMesa21.setBorder(null);
         btnMesa21.setContentAreaFilled(false);
@@ -361,8 +390,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa21ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 30, 140, 90));
+        getContentPane().add(btnMesa21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 20, 140, 90));
 
+        btnMesa22.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa22.setText("22");
         btnMesa22.setBorder(null);
         btnMesa22.setContentAreaFilled(false);
@@ -371,8 +401,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa22ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 40, 150, 80));
+        getContentPane().add(btnMesa22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 150, 80));
 
+        btnMesa23.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa23.setText("23");
         btnMesa23.setBorder(null);
         btnMesa23.setContentAreaFilled(false);
@@ -381,8 +412,9 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa23ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa23, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 140, 90));
+        getContentPane().add(btnMesa23, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 140, 90));
 
+        btnMesa24.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnMesa24.setText("24");
         btnMesa24.setBorder(null);
         btnMesa24.setContentAreaFilled(false);
@@ -391,13 +423,16 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnMesa24ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMesa24, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 150, 90));
+        getContentPane().add(btnMesa24, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 150, 90));
 
         lblHoraFecha.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblHoraFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/relog.png"))); // NOI18N
         lblHoraFecha.setText("13/12/12 - 09:09:09");
-        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 230, 40));
+        lblHoraFecha.setFocusable(false);
+        lblHoraFecha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblHoraFecha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, 170, 90));
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -411,7 +446,7 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 210, 80));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 210, 60));
 
         btnUsuario.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,7 +456,6 @@ public final class FrmMesa extends javax.swing.JFrame {
         btnUsuario.setBorder(null);
         btnUsuario.setContentAreaFilled(false);
         btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnUsuario.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -430,49 +464,39 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 180, 130));
+        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 310, 130));
 
         FondoComanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/Mesas3.png"))); // NOI18N
-        getContentPane().add(FondoComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(FondoComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void btnMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa1ActionPerformed
         cargarMesa(1);
-        this.setVisible(false);
     }//GEN-LAST:event_btnMesa1ActionPerformed
     private void btnMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa2ActionPerformed
-        cargarMesa(2);
-        this.setVisible(false);
+        cargarMesa(2); 
     }//GEN-LAST:event_btnMesa2ActionPerformed
     private void btnMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa3ActionPerformed
-        cargarMesa(3);
-        this.setVisible(false);
+        cargarMesa(3); 
     }//GEN-LAST:event_btnMesa3ActionPerformed
     private void btnMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa4ActionPerformed
-        cargarMesa(4);
-        this.setVisible(false);
+        cargarMesa(4); 
     }//GEN-LAST:event_btnMesa4ActionPerformed
     private void btnMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa5ActionPerformed
-        cargarMesa(5);
-        this.setVisible(false);
+        cargarMesa(5); 
     }//GEN-LAST:event_btnMesa5ActionPerformed
     private void btnMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa6ActionPerformed
-        cargarMesa(6);
-        this.setVisible(false);
+        cargarMesa(6); 
     }//GEN-LAST:event_btnMesa6ActionPerformed
     private void btnMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa7ActionPerformed
-        cargarMesa(7);
-        this.setVisible(false);
-
+        cargarMesa(7); 
     }//GEN-LAST:event_btnMesa7ActionPerformed
     private void btnMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa8ActionPerformed
-        cargarMesa(8);
-        this.setVisible(false);
+        cargarMesa(8); 
     }//GEN-LAST:event_btnMesa8ActionPerformed
     private void btnMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa9ActionPerformed
         cargarMesa(9);
-        this.setVisible(false);
     }//GEN-LAST:event_btnMesa9ActionPerformed
     private void btnMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa10ActionPerformed
         cargarMesa(10);
@@ -487,72 +511,55 @@ public final class FrmMesa extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMesa12ActionPerformed
     private void btnMesa13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa13ActionPerformed
-        cargarMesa(13);
-        this.setVisible(false);
+        cargarMesa(13); 
     }//GEN-LAST:event_btnMesa13ActionPerformed
     private void btnMesa14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa14ActionPerformed
-        cargarMesa(14);
-        this.setVisible(false);
+        cargarMesa(14); 
     }//GEN-LAST:event_btnMesa14ActionPerformed
     private void btnMesa15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa15ActionPerformed
-        cargarMesa(15);
-        this.setVisible(false);
+        cargarMesa(15); 
     }//GEN-LAST:event_btnMesa15ActionPerformed
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/salir.png"));
         int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea serrar sesión?", "Serrar Sessión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
         if (input == 0) {
             Roles.index();
+            this.setVisible(false);
+            this.removeAll();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
-
     private void btnMesa20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa20ActionPerformed
-        cargarMesa(20);
-        this.setVisible(false);
+        cargarMesa(20); 
     }//GEN-LAST:event_btnMesa20ActionPerformed
-
     private void btnMesa16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa16ActionPerformed
-        cargarMesa(16);
-        this.setVisible(false);
+        cargarMesa(16); 
     }//GEN-LAST:event_btnMesa16ActionPerformed
-
     private void btnMesa17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa17ActionPerformed
-        cargarMesa(17);
-        this.setVisible(false);
+        cargarMesa(17); 
     }//GEN-LAST:event_btnMesa17ActionPerformed
-
     private void btnMesa18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa18ActionPerformed
-        cargarMesa(18);
-        this.setVisible(false);
+        cargarMesa(18); 
     }//GEN-LAST:event_btnMesa18ActionPerformed
-
     private void btnMesa19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa19ActionPerformed
-        cargarMesa(19);
-        this.setVisible(false);
+        cargarMesa(19); 
     }//GEN-LAST:event_btnMesa19ActionPerformed
-
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         FrmPerfil perfil = new FrmPerfil();
         idEmp = Roles.idEmpleado;
         perfil.setVisible(true); 
     }//GEN-LAST:event_btnUsuarioActionPerformed
-
     private void btnMesa21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa21ActionPerformed
-        // TODO add your handling code here:
+        cargarMesa(21); 
     }//GEN-LAST:event_btnMesa21ActionPerformed
-
     private void btnMesa22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa22ActionPerformed
-        // TODO add your handling code here:
+        cargarMesa(22); 
     }//GEN-LAST:event_btnMesa22ActionPerformed
-
     private void btnMesa23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa23ActionPerformed
-        // TODO add your handling code here:
+        cargarMesa(23); 
     }//GEN-LAST:event_btnMesa23ActionPerformed
-
     private void btnMesa24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa24ActionPerformed
-        // TODO add your handling code here:
+        cargarMesa(24); 
     }//GEN-LAST:event_btnMesa24ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoComanda;
     private javax.swing.JButton btnMesa1;

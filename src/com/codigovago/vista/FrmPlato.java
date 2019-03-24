@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -44,6 +45,8 @@ public final class FrmPlato extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         componentes();
+        txtObservaciones.setLineWrap(true); 
+
     }
     void activarMesa(int mesa){
         String query  = "INSERT INTO pedido (mes_numero) VALUES('"+mesa+"');"; 
@@ -135,8 +138,7 @@ public final class FrmPlato extends javax.swing.JFrame {
         txtObservaciones = new javax.swing.JTextArea();
         btnComandas = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnMinimizar = new javax.swing.JButton();
-        txtCantidad = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JComboBox<>();
         lblPedido = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         bar = new javax.swing.JRadioButton();
@@ -148,6 +150,7 @@ public final class FrmPlato extends javax.swing.JFrame {
         quitar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         FondoOrden = new javax.swing.JLabel();
 
         btnSeleccionar.setText("Seleccionar");
@@ -198,42 +201,61 @@ public final class FrmPlato extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblComanda);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 710, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 710, 370));
 
         lblNumMesa.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         lblNumMesa.setForeground(new java.awt.Color(255, 255, 255));
         lblNumMesa.setText("Mesa: 1");
-        getContentPane().add(lblNumMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, -1));
+        getContentPane().add(lblNumMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 130, -1));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cantidad");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Observación");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
 
         txtListaPlatos.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtListaPlatos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platos disponibles" }));
-        getContentPane().add(txtListaPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 310, 40));
+        getContentPane().add(txtListaPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 310, 40));
+
+        jScrollPane2.setAutoscrolls(true);
+        jScrollPane2.setDoubleBuffered(true);
+        jScrollPane2.setEnabled(false);
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.setRequestFocusEnabled(false);
+        jScrollPane2.setVerifyInputWhenFocusTarget(false);
 
         txtObservaciones.setColumns(20);
-        txtObservaciones.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        txtObservaciones.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         txtObservaciones.setRows(5);
+        txtObservaciones.setBorder(null);
+        txtObservaciones.setDoubleBuffered(true);
+        txtObservaciones.setDragEnabled(true);
+        txtObservaciones.setFocusCycleRoot(true);
+        txtObservaciones.setFocusTraversalPolicyProvider(true);
+        txtObservaciones.setVerifyInputWhenFocusTarget(false);
         jScrollPane2.setViewportView(txtObservaciones);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 350, 130));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 330, 130));
 
         btnComandas.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        btnComandas.setText("Comanda");
+        btnComandas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/comana.png"))); // NOI18N
+        btnComandas.setContentAreaFilled(false);
+        btnComandas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnComandas.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        btnComandas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnComandas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnComandas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnComandas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComandasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnComandas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 350, 50));
+        getContentPane().add(btnComandas, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 620, 340, 80));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
         btnSalir.setBorderPainted(false);
@@ -246,23 +268,14 @@ public final class FrmPlato extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 10, 50, 50));
 
-        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/min.png"))); // NOI18N
-        btnMinimizar.setBorderPainted(false);
-        btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinimizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, 40, 50));
-
-        txtCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 70, 30));
+        txtCantidad.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        txtCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 80, 30));
 
         lblPedido.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         lblPedido.setForeground(new java.awt.Color(255, 255, 255));
         lblPedido.setText("Pedido: 1");
-        getContentPane().add(lblPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 230, -1));
+        getContentPane().add(lblPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 230, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Orden", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel1.setOpaque(false);
@@ -311,23 +324,23 @@ public final class FrmPlato extends javax.swing.JFrame {
                     .addComponent(bar)))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 260, 70));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 260, 70));
 
         lblNombre.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre: Jeison Caguana");
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         lblHoraFecha.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblHoraFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblHoraFecha.setText("13/12/12 - 09:09:09");
-        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
+        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Administrcación", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setOpaque(false);
 
         btnAgregar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        btnAgregar.setText("Añadir");
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/añadir.png"))); // NOI18N
+        btnAgregar.setContentAreaFilled(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -335,7 +348,8 @@ public final class FrmPlato extends javax.swing.JFrame {
         });
 
         quitar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        quitar.setText("Quitar");
+        quitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/quitar.png"))); // NOI18N
+        quitar.setContentAreaFilled(false);
         quitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quitarActionPerformed(evt);
@@ -343,7 +357,8 @@ public final class FrmPlato extends javax.swing.JFrame {
         });
 
         btnActualizar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        btnActualizar.setText("Actualizar");
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/modificar.png"))); // NOI18N
+        btnActualizar.setContentAreaFilled(false);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -351,7 +366,8 @@ public final class FrmPlato extends javax.swing.JFrame {
         });
 
         btnNuevo.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        btnNuevo.setText("Nuevo");
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/limpiar.png"))); // NOI18N
+        btnNuevo.setContentAreaFilled(false);
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -365,50 +381,57 @@ public final class FrmPlato extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(quitar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 150, 200, 380));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 230, 340));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/descarga.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 100, 90));
 
         FondoOrden.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         FondoOrden.setForeground(new java.awt.Color(255, 255, 255));
         FondoOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/fondo1.png"))); // NOI18N
-        getContentPane().add(FondoOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1510, 740));
+        getContentPane().add(FondoOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1510, 820));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        Roles.rolMesero();
-        FrmPlato fn = new FrmPlato();
-        fn = null;
+        ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea canselar la orden?", "Cancelar Comanda", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
+        if (input == 0) {
+            Roles.rolMesero();
+            this.setVisible(false);
+            this.removeAll();
+        } 
     }//GEN-LAST:event_btnSalirActionPerformed
-    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
-        this.setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_btnMinimizarActionPerformed
     private void btnComandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComandasActionPerformed
         numPedido = numeroPedido;
         numMesa   = FrmMesa.ban;
         buscaDatosUsuario = empleados.buscarDatosUsuario(Roles.idEmpleado);
-        Roles.comanda();         
+        FrmComandas comandas = new FrmComandas();
+        comandas.setVisible(true);       
         this.setVisible(false);
+        this.removeAll();
     }//GEN-LAST:event_btnComandasActionPerformed
     private void barActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barActionPerformed
         listaProdutos("bar");
@@ -420,7 +443,7 @@ public final class FrmPlato extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         int fila= tblComanda.getSelectedRow();
         if(fila>=0){
-            obProductoMenu.actualizaComanda(txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getText()),numeroPedido);
+            obProductoMenu.actualizaComanda(txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()),numeroPedido);
             cargarComanda(numeroPedido);
             limpiar();
         }else{
@@ -429,7 +452,7 @@ public final class FrmPlato extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
     void limpiar() {
         listaProdutos("null"); 
-        txtCantidad.setText("");
+        txtCantidad.setSelectedIndex(0);
         txtObservaciones.setText("");
         txtListaPlatos.setSelectedIndex(0);
 //        grupo_seccion.clearSelection();
@@ -451,7 +474,7 @@ public final class FrmPlato extends javax.swing.JFrame {
         if (cocina.isSelected()) {
             seccion ="cocina";
         }
-        if (obProductoMenu.registarMenu(numeroPedido,txtListaPlatos.getSelectedItem().toString(),txtObservaciones.getText(), Integer.parseInt(txtCantidad.getText()), seccion ) ){
+        if (obProductoMenu.registarMenu(numeroPedido,txtListaPlatos.getSelectedItem().toString(),txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), seccion ) ){
             cargarComanda(numeroPedido);
             limpiar();
         }else{
@@ -463,7 +486,7 @@ public final class FrmPlato extends javax.swing.JFrame {
         int fila= tblComanda.getSelectedRow();
         grupo_seccion.clearSelection();
         txtListaPlatos.setActionCommand(tblComanda.getValueAt(fila, 0).toString());
-        txtCantidad.setText(tblComanda.getValueAt(fila, 1).toString());
+        txtCantidad.setActionCommand(tblComanda.getValueAt(fila, 1).toString());
         txtObservaciones.setText(tblComanda.getValueAt(fila, 3).toString());
     }//GEN-LAST:event_tblComandaMouseClicked
 
@@ -478,13 +501,13 @@ public final class FrmPlato extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnComandas;
     private javax.swing.JMenuItem btnEliminar;
-    private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JMenuItem btnSeleccionar;
     private javax.swing.JRadioButton cocina;
     private javax.swing.JPopupMenu grupo1;
     private javax.swing.ButtonGroup grupo_seccion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -497,7 +520,7 @@ public final class FrmPlato extends javax.swing.JFrame {
     private javax.swing.JLabel lblPedido;
     private javax.swing.JButton quitar;
     private javax.swing.JTable tblComanda;
-    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JComboBox<String> txtCantidad;
     private javax.swing.JComboBox<String> txtListaPlatos;
     private javax.swing.JTextArea txtObservaciones;
     // End of variables declaration//GEN-END:variables
