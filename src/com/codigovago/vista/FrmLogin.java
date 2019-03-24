@@ -47,7 +47,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         txtClave.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         txtClave.setForeground(new java.awt.Color(255, 255, 255));
-        txtClave.setText("Caguana13");
+        txtClave.setText("Caguana60");
         txtClave.setBorder(null);
         txtClave.setCaretColor(new java.awt.Color(255, 255, 255));
         txtClave.setDisabledTextColor(new java.awt.Color(255, 255, 255));

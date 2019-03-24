@@ -29,14 +29,10 @@ public final class FrmPlato extends javax.swing.JFrame {
     /**
      * Creates new form FrmOrden
      */
-    FrmMesa FrmMesa = new FrmMesa();
     FechaHora horaFecha; 
     ProductosMenu obProductoMenu = new ProductosMenu();
-    Conexion cn = new Conexion();
     Empleados empleados = new Empleados();
     Roles Roles = new Roles();
-    Connection conexion = cn.getConexion(); 
-    PreparedStatement ps = null;
     public static int numPedido;
     public static int numMesa;  
     public static String buscaDatosUsuario;  
@@ -46,17 +42,24 @@ public final class FrmPlato extends javax.swing.JFrame {
         initComponents();
         componentes();
         txtObservaciones.setLineWrap(true); 
-
     }
     void activarMesa(int mesa){
+        Conexion cn = new Conexion();
+        Connection conex = cn.getConexion(); 
+        PreparedStatement pss = null;
         String query  = "INSERT INTO pedido (mes_numero) VALUES('"+mesa+"');"; 
         try {
-            ps = conexion.prepareStatement( query );   
-            ps.execute();  
-            System.out.println("Mesa "+mesa+" OCUPADA");
+            pss = conex.prepareStatement( query );   
+            pss.execute();   
         } catch (SQLException evt) { 
             evt.toString();  
-        } 
+        }finally{
+            try {
+                conex.close();
+            } catch (SQLException e) {
+                e.toString();
+            }
+        }
     }
     void componentes(){
         lblNombre.setText("Mesero: "+empleados.buscarDatosUsuario(Roles.idEmpleado));
@@ -70,8 +73,9 @@ public final class FrmPlato extends javax.swing.JFrame {
         cargarComanda(obProductoMenu.ultimoRegistro());
         activarMesa(FrmMesa.ban);
     }
-
     void cargarComanda(int ped_codigo){ 
+        Conexion cn = new Conexion();
+        Connection conexion = cn.getConexion(); 
         tblComanda.isCellSelected(1, 1);
         DefaultTableModel modelo= new DefaultTableModel();
         modelo.addColumn("DETALLE"); 
@@ -104,12 +108,14 @@ public final class FrmPlato extends javax.swing.JFrame {
         time.start();
     }
     public boolean listaProdutos(String seccion) {
+        Conexion cn = new Conexion();
         String query = "SELECT prm_nombre FROM producto_menu WHERE seccion ='"+seccion+"' AND prm_disponibilidad='si';";
         PreparedStatement ps = null;
+        Connection conex = cn.getConexion(); 
         ResultSet rs = null;
         try {
             txtListaPlatos.removeAllItems();
-            ps = conexion.prepareStatement(query); 
+            ps = conex.prepareStatement(query); 
             rs = ps.executeQuery(); 
             while(rs.next()){
                 txtListaPlatos.addItem(rs.getString(1));
@@ -117,6 +123,12 @@ public final class FrmPlato extends javax.swing.JFrame {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
+        }finally{
+            try {
+                conex.close();
+            } catch (SQLException e) {
+                e.toString();
+            }
         }
         return false;
     }
@@ -420,10 +432,23 @@ public final class FrmPlato extends javax.swing.JFrame {
         int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea cancelar la orden?", "Cancelar Comanda", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
         if (input == 0) {
             Roles.rolMesero();
+            isNull(); 
             this.setVisible(false);
-            this.removeAll();
+            this.dispose();
         } 
     }//GEN-LAST:event_btnSalirActionPerformed
+    void isNull (){  
+        horaFecha = null; 
+        obProductoMenu = null;
+        empleados = null;
+        Roles = null;
+        numPedido = 0;
+        numMesa = 0;  
+        buscaDatosUsuario = null;  
+        numeroPedido = 0;
+        txtObservaciones = null;
+        
+    }
     private void btnComandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComandasActionPerformed
         numPedido = numeroPedido;
         numMesa   = FrmMesa.ban;
@@ -451,10 +476,10 @@ public final class FrmPlato extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
     void limpiar() {
-        listaProdutos("null"); 
-        txtCantidad.setSelectedIndex(0);
+        //listaProdutos(""); 
+        txtCantidad.setSelectedItem("1");
         txtObservaciones.setText("");
-        txtListaPlatos.setSelectedIndex(0);
+        txtListaPlatos.setSelectedItem("Productos Disponibles");
 //        grupo_seccion.clearSelection();
     }
     private void quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarActionPerformed
@@ -491,7 +516,7 @@ public final class FrmPlato extends javax.swing.JFrame {
     }//GEN-LAST:event_tblComandaMouseClicked
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+        limpiar();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

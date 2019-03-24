@@ -26,7 +26,7 @@ public class FechaHora implements Runnable {
     public String Tiempo1() {
         Date date = new Date();
         DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
-        DateFormat hora  = new SimpleDateFormat("HH:mm:ss");
+        DateFormat hora  = new SimpleDateFormat("HH:mm");
         return ( fecha.format(date)+" "+ hora.format(date));
     }
     @Override

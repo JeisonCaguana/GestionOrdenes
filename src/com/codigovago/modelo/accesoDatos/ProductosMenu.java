@@ -141,7 +141,7 @@ public class ProductosMenu extends Conexion {
         ResultSet rs = null;
         Connection conexion = getConexion();
         boolean ban = false;
-        String query = "UPDATE detalle_producto_menu SET prm_nombre='" + prm_nombre + "',det_especificaciones='" + det_especificaciones + "',det_cantidad='" + det_cantidad + "' WHERE ped_codigo='" + ped_codigo + "';";
+        String query = "UPDATE detalle_producto_menu SET prm_nombre='" + prm_nombre + "',det_especificaciones='" + det_especificaciones + "',det_cantidad='" + det_cantidad + "' WHERE prm_nombre='" + prm_nombre + "';";
         try {
             ps = conexion.prepareStatement(query);
             ps.execute();

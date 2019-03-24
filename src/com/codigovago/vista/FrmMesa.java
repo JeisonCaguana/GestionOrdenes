@@ -25,12 +25,22 @@ public final class FrmMesa extends javax.swing.JFrame {
 
     Empleados empleados = new Empleados();
     Roles Roles = new Roles();
-    FechaHora horaFecha;
+    FechaHora horaFecha; 
+    String nomMesero = "";
     public FrmMesa() {
         this.setUndecorated(true);
         initComponents();
-        btnUsuario.setText("  Mesero: " + empleados.buscarDatosUsuario(Roles.idEmpleado));
+        nomMesero = empleados.buscarDatosUsuario(Roles.idEmpleado);
+        btnUsuario.setText("  Mesero: " + nomMesero);
         horaFecha();
+    }
+    void isNull(){
+        empleados = null;
+        Roles = null;
+        horaFecha = null;
+        btnUsuario = null;
+        nomMesero = "";
+        ban = 0; 
     }
 
     void horaFecha() {
@@ -43,7 +53,8 @@ public final class FrmMesa extends javax.swing.JFrame {
         this.ban = ban;
         FrmPlato FrmOrden = new FrmPlato();
         FrmOrden.setVisible(true);
-        this.setVisible(false); 
+        this.dispose();
+        isNull(); 
     }
     
     @SuppressWarnings("unchecked")
