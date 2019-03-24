@@ -5,8 +5,7 @@
  */
 package com.codigovago.controlador;
 
-import com.codigovago.modelo.Usuario;
-import com.codigovago.vista.FrmAdministrador;
+
 import com.codigovago.vista.FrmComandas;
 import com.codigovago.vista.FrmLogin;
 import com.codigovago.vista.FrmMesa;
