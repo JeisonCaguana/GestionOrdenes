@@ -25,7 +25,7 @@ public class Hora implements Runnable {
     }  
     public String Tiempo1() {
         Date date = new Date(); 
-        DateFormat hora  = new SimpleDateFormat("HH:mm:ss");
+        DateFormat hora  = new SimpleDateFormat("HH:mm");
         return (hora.format(date));
     }
     @Override

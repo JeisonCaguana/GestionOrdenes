@@ -43,8 +43,7 @@ public final class FrmMesa extends javax.swing.JFrame {
         this.ban = ban;
         FrmPlato FrmOrden = new FrmPlato();
         FrmOrden.setVisible(true);
-        this.setVisible(false);
-        this.removeAll();
+        this.setVisible(false); 
     }
     
     @SuppressWarnings("unchecked")
@@ -524,8 +523,7 @@ public final class FrmMesa extends javax.swing.JFrame {
         int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea serrar sesión?", "Serrar Sessión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
         if (input == 0) {
             Roles.index();
-            this.setVisible(false);
-            this.removeAll();
+            this.setVisible(false); 
         }
     }//GEN-LAST:event_btnSalirActionPerformed
     private void btnMesa20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa20ActionPerformed

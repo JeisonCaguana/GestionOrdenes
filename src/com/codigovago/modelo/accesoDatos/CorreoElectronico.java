@@ -61,7 +61,7 @@ public class CorreoElectronico extends Conexion {
             return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.toString());
-            return 1;
+            return 0;
         } finally {
             try {
                 con.close();
