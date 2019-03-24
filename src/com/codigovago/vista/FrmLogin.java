@@ -26,8 +26,6 @@ public class FrmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSalir = new javax.swing.JButton();
-        btnMinimizar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtClave = new javax.swing.JPasswordField();
         btnIniciarSesion = new javax.swing.JButton();
@@ -38,38 +36,17 @@ public class FrmLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
-        btnSalir.setBorderPainted(false);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.setDefaultCapable(false);
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 0, 50, 50));
-
-        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/min.png"))); // NOI18N
-        btnMinimizar.setBorderPainted(false);
-        btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinimizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 0, 40, 50));
-
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        txtUsuario.setText("jcaguana1");
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(null);
         txtUsuario.setOpaque(false);
-        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 420, 40));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 320, 40));
 
         txtClave.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
-        txtClave.setText("Caguana28");
+        txtClave.setForeground(new java.awt.Color(255, 255, 255));
         txtClave.setBorder(null);
         txtClave.setOpaque(false);
-        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 440, 40));
+        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 340, 40));
 
         btnIniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/botonIniciarSecion.png"))); // NOI18N
         btnIniciarSesion.setBorder(null);
@@ -79,7 +56,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 480, 400, 100));
+        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 40, 310, 80));
 
         btnOlvideClave.setBorder(null);
         btnOlvideClave.setContentAreaFilled(false);
@@ -88,31 +65,19 @@ public class FrmLogin extends javax.swing.JFrame {
                 btnOlvideClaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnOlvideClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 590, 300, 30));
+        getContentPane().add(btnOlvideClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 130, 300, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("¿Olvidaste tu contraseña?");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 590, -1, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, -1, 30));
 
-        FondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/loginIster.png"))); // NOI18N
-        getContentPane().add(FondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1340, 740));
+        FondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/loginIster.JPG"))); // NOI18N
+        getContentPane().add(FondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 910));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        ImageIcon img = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
-        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea salir del Módulo?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, img);
-        if (input == 0) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
-        this.setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_btnMinimizarActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         ImageIcon error = new ImageIcon(getClass().getResource("../assets/icons/error.png"));
@@ -144,9 +109,7 @@ public class FrmLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoLogin;
     private javax.swing.JButton btnIniciarSesion;
-    private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton btnOlvideClave;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtUsuario;

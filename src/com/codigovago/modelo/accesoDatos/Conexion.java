@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,11 +29,11 @@ public class Conexion {
      * @param contrasenaBD
      * @return
      */
-    final String hostBD          = "jdbc:mysql://sql10.freemysqlhosting.net";
-    final String nombreBD        = "sql10284453"; 
+    final String hostBD          = "jdbc:mysql://sql10.freemysqlhosting.net/";
+    final String nombreBD        = "sql10284899"; 
     final String certificadoHOST ="?useTimezone=true&serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true";
-    final String usuarioBD       = "sql10284453";
-    final String contrasenaBD    = ""; 
+    final String usuarioBD       = "sql10284899";
+    final String contrasenaBD    = "jJ4qkmpksM"; 
 
     public Connection getConexion(){ 
         try{
@@ -43,6 +44,7 @@ public class Conexion {
             System.err.println(e.toString());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Revice su el servidor de Base de Datos");
         }
       return con;  
     } 

@@ -396,7 +396,9 @@ public final class FrmPlato extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.setVisible(false);
+        Roles.rolMesero();
+        FrmPlato fn = new FrmPlato();
+        fn = null;
     }//GEN-LAST:event_btnSalirActionPerformed
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
         this.setExtendedState(ICONIFIED);

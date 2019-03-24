@@ -239,6 +239,8 @@ public final class FrmComandas extends javax.swing.JFrame {
         FrmPlato plato = new FrmPlato();
         plato.setVisible(true);
         this.setVisible(false);
+        FrmComandas fn = new FrmComandas();
+        fn = null;
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
