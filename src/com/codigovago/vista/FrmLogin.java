@@ -31,6 +31,7 @@ public class FrmLogin extends javax.swing.JFrame {
         btnIniciarSesion = new javax.swing.JButton();
         btnOlvideClave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         FondoLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,6 +79,17 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel1.setText("¿Olvidaste tu contraseña?");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, -1, 30));
 
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setDefaultCapable(false);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 10, 50, 50));
+
         FondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/loginIster.JPG"))); // NOI18N
         getContentPane().add(FondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 910));
 
@@ -110,10 +122,15 @@ public class FrmLogin extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_btnOlvideClaveActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoLogin;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnOlvideClave;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtUsuario;

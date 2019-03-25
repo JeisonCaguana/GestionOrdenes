@@ -13,13 +13,14 @@ import com.codigovago.modelo.accesoDatos.ProductosMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException; 
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author JEISON
@@ -29,31 +30,33 @@ public final class FrmPlato extends javax.swing.JFrame {
     /**
      * Creates new form FrmOrden
      */
-    FechaHora horaFecha; 
+    FechaHora horaFecha;
     ProductosMenu obProductoMenu = new ProductosMenu();
     Empleados empleados = new Empleados();
     Roles Roles = new Roles();
     public static int numPedido;
-    public static int numMesa;  
-    public static String buscaDatosUsuario;  
+    public static int numMesa;
+    public static String buscaDatosUsuario;
     int numeroPedido = obProductoMenu.ultimoRegistro();
+
     public FrmPlato() {
         this.setUndecorated(true);
         initComponents();
         componentes();
-        txtObservaciones.setLineWrap(true); 
+        txtObservaciones.setLineWrap(true);
     }
-    void activarMesa(int mesa){
+
+    void activarMesa(int mesa) {
         Conexion cn = new Conexion();
-        Connection conex = cn.getConexion(); 
+        Connection conex = cn.getConexion();
         PreparedStatement pss = null;
-        String query  = "INSERT INTO pedido (mes_numero) VALUES('"+mesa+"');"; 
+        String query = "INSERT INTO pedido (mes_numero) VALUES('" + mesa + "');";
         try {
-            pss = conex.prepareStatement( query );   
-            pss.execute();   
-        } catch (SQLException evt) { 
-            evt.toString();  
-        }finally{
+            pss = conex.prepareStatement(query);
+            pss.execute();
+        } catch (SQLException evt) {
+            evt.toString();
+        } finally {
             try {
                 conex.close();
             } catch (SQLException e) {
@@ -61,69 +64,73 @@ public final class FrmPlato extends javax.swing.JFrame {
             }
         }
     }
-    void componentes(){
-        lblNombre.setText("Mesero: "+empleados.buscarDatosUsuario(Roles.idEmpleado));
+
+    void componentes() {
+        lblNombre.setText("Mesero: " + empleados.buscarDatosUsuario(Roles.idEmpleado));
         lblNumMesa.setText("Mesa N# " + FrmMesa.ban);
-        lblPedido.setText("Pedido N# 000"+numeroPedido);
-        horaFecha();  
+        lblPedido.setText("Pedido N# 000" + numeroPedido);
+        horaFecha();
         tblComanda.getTableHeader().setPreferredSize(new java.awt.Dimension(40, 40));
         tblComanda.setRowHeight(30);
         tblComanda.setRowHeight(1, 30);
-        tblComanda.setFont(new java.awt.Font("Tahoma", 0, 15));  
+        tblComanda.setFont(new java.awt.Font("Tahoma", 0, 15));
         cargarComanda(obProductoMenu.ultimoRegistro());
         activarMesa(FrmMesa.ban);
     }
-    void cargarComanda(int ped_codigo){ 
+
+    void cargarComanda(int ped_codigo) {
         Conexion cn = new Conexion();
-        Connection conexion = cn.getConexion(); 
+        Connection conexion = cn.getConexion();
         tblComanda.isCellSelected(1, 1);
-        DefaultTableModel modelo= new DefaultTableModel();
-        modelo.addColumn("DETALLE"); 
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("DETALLE");
         modelo.addColumn("CANTIDAD");
         modelo.addColumn("PRECIO UNIDAD");
-        modelo.addColumn("OBSERBACIONES"); 
+        modelo.addColumn("OBSERVACIÓN");
         tblComanda.setModel(modelo);
-  
-        String query="SELECT * FROM detalle_producto_menu WHERE ped_codigo='"+ped_codigo+"';";
-  
-        String []datos = new String [4];
+
+        String query = "SELECT * FROM detalle_producto_menu WHERE ped_codigo='" + ped_codigo + "';";
+
+        String[] datos = new String[4];
         try {
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()){
-                datos[0]=rs.getString(3);
-                datos[1]=rs.getString(6);                   
-                datos[2]=rs.getString(8)+"0";
-                datos[3]=rs.getString(5);
+            while (rs.next()) {
+                datos[0] = rs.getString(3);
+                datos[1] = rs.getString(6);
+                datos[2] = rs.getString(8) + "0";
+                datos[3] = rs.getString(5);
                 modelo.addRow(datos);
             }
             tblComanda.setModel(modelo);
         } catch (SQLException ex) {
-           Logger.getLogger(FrmPlato.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrmPlato.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     void horaFecha() {
         horaFecha = new FechaHora(lblHoraFecha);
         Thread time = new Thread(horaFecha);
         time.start();
     }
+
     public boolean listaProdutos(String seccion) {
         Conexion cn = new Conexion();
-        String query = "SELECT prm_nombre FROM producto_menu WHERE seccion ='"+seccion+"' AND prm_disponibilidad='si';";
+        String query = "SELECT prm_nombre FROM producto_menu WHERE seccion ='" + seccion + "' AND prm_disponibilidad='si';";
         PreparedStatement ps = null;
-        Connection conex = cn.getConexion(); 
+        Connection conex = cn.getConexion();
         ResultSet rs = null;
         try {
             txtListaPlatos.removeAllItems();
-            ps = conex.prepareStatement(query); 
-            rs = ps.executeQuery(); 
-            while(rs.next()){
+            ps = conex.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 txtListaPlatos.addItem(rs.getString(1));
-            } 
+            }
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
-        }finally{
+        } finally {
             try {
                 conex.close();
             } catch (SQLException e) {
@@ -132,6 +139,7 @@ public final class FrmPlato extends javax.swing.JFrame {
         }
         return false;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -213,7 +221,7 @@ public final class FrmPlato extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblComanda);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 690, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 690, 370));
 
         lblNumMesa.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         lblNumMesa.setForeground(new java.awt.Color(255, 255, 255));
@@ -278,11 +286,11 @@ public final class FrmPlato extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 10, 50, 50));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 10, 50, 50));
 
         txtCantidad.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 80, 30));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 80, 30));
 
         lblPedido.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         lblPedido.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,17 +412,17 @@ public final class FrmPlato extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
                 .addComponent(quitar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 210, 340));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 210, 340));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/descarga.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 100, 90));
@@ -432,29 +440,29 @@ public final class FrmPlato extends javax.swing.JFrame {
         int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea cancelar la orden?", "Cancelar Comanda", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
         if (input == 0) {
             Roles.rolMesero();
-            isNull(); 
+            isNull();
             this.setVisible(false);
             this.dispose();
-        } 
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
-    void isNull (){  
-        horaFecha = null; 
+    void isNull() {
+        horaFecha = null;
         obProductoMenu = null;
         empleados = null;
         Roles = null;
         numPedido = 0;
-        numMesa = 0;  
-        buscaDatosUsuario = null;  
+        numMesa = 0;
+        buscaDatosUsuario = null;
         numeroPedido = 0;
         txtObservaciones = null;
-        
+
     }
     private void btnComandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComandasActionPerformed
         numPedido = numeroPedido;
-        numMesa   = FrmMesa.ban;
+        numMesa = FrmMesa.ban;
         buscaDatosUsuario = empleados.buscarDatosUsuario(Roles.idEmpleado);
         FrmComandas comandas = new FrmComandas();
-        comandas.setVisible(true);       
+        comandas.setVisible(true);
         this.setVisible(false);
         this.removeAll();
     }//GEN-LAST:event_btnComandasActionPerformed
@@ -466,13 +474,13 @@ public final class FrmPlato extends javax.swing.JFrame {
     }//GEN-LAST:event_cocinaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        int fila= tblComanda.getSelectedRow();
-        if(fila>=0){
-            obProductoMenu.actualizaComanda(txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()),numeroPedido);
+        int fila = tblComanda.getSelectedRow();
+        if (fila >= 0) {
+            obProductoMenu.actualizaComanda(txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), numeroPedido);
             cargarComanda(numeroPedido);
             limpiar();
-        }else{
-            JOptionPane.showMessageDialog(null,"No a seleccionado ningun producto para actualizar");
+        } else {
+            JOptionPane.showMessageDialog(null, "No a seleccionado ningun producto para actualizar");
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
     void limpiar() {
@@ -483,12 +491,12 @@ public final class FrmPlato extends javax.swing.JFrame {
 //        grupo_seccion.clearSelection();
     }
     private void quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarActionPerformed
-       int fila= tblComanda.getSelectedRow();
-        if(fila>=0){
+        int fila = tblComanda.getSelectedRow();
+        if (fila >= 0) {
             obProductoMenu.quitaProductoMenu(tblComanda.getValueAt(fila, 0).toString());
             cargarComanda(numeroPedido);
-        }else{
-            JOptionPane.showMessageDialog(null,"No a seleccionado ningun producto para quitar");
+        } else {
+            JOptionPane.showMessageDialog(null, "No a seleccionado ningun producto para quitar");
         }
     }//GEN-LAST:event_quitarActionPerformed
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -497,18 +505,18 @@ public final class FrmPlato extends javax.swing.JFrame {
             seccion = "bar";
         }
         if (cocina.isSelected()) {
-            seccion ="cocina";
+            seccion = "cocina";
         }
-        if (obProductoMenu.registarMenu(numeroPedido,txtListaPlatos.getSelectedItem().toString(),txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), seccion ) ){
+        if (obProductoMenu.registarMenu(numeroPedido, txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), seccion)) {
             cargarComanda(numeroPedido);
             limpiar();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Producto no disponible..");
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void tblComandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblComandaMouseClicked
-        int fila= tblComanda.getSelectedRow();
+        int fila = tblComanda.getSelectedRow();
         grupo_seccion.clearSelection();
         txtListaPlatos.setActionCommand(tblComanda.getValueAt(fila, 0).toString());
         txtCantidad.setActionCommand(tblComanda.getValueAt(fila, 1).toString());

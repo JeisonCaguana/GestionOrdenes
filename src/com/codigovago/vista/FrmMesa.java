@@ -442,7 +442,7 @@ public final class FrmMesa extends javax.swing.JFrame {
         lblHoraFecha.setFocusable(false);
         lblHoraFecha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblHoraFecha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, 170, 90));
+        getContentPane().add(lblHoraFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 170, 90));
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -456,7 +456,7 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 210, 60));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 700, 210, 60));
 
         btnUsuario.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -474,7 +474,7 @@ public final class FrmMesa extends javax.swing.JFrame {
                 btnUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 310, 130));
+        getContentPane().add(btnUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 330, 130));
 
         FondoComanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/Mesas3.png"))); // NOI18N
         getContentPane().add(FondoComanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
