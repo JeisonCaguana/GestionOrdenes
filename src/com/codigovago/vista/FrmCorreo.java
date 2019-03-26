@@ -64,7 +64,7 @@ public class FrmCorreo extends javax.swing.JFrame {
                 btnEnviarCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 310, -1));
+        getContentPane().add(btnEnviarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 310, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
         btnSalir.setBorder(null);

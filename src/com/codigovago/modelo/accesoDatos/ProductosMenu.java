@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,6 +92,31 @@ public class ProductosMenu extends Conexion {
         }
         //cerrar objtos....................................................................
     }
+    public int existeDetallePedido(int ped_codigo, String prm_nombre){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+        int ban = 0;
+        String sql = "SELECT count(det_codigo) FROM detalle_producto_menu WHERE ped_codigo = '"+ped_codigo+"' AND prm_nombre='"+prm_nombre+"'";
+        try {
+            ps = con.prepareStatement(sql); 
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                ban = rs.getInt(1);
+            } 
+            return ban;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return ban;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.toString());
+            }
+        }
+    }
+    
     public double listaPrecioMenu(String prm_nombre) {
         PreparedStatement ps = null;
         ResultSet rs = null;

@@ -74,8 +74,13 @@ public final class FrmPlato extends javax.swing.JFrame {
         tblComanda.setRowHeight(30);
         tblComanda.setRowHeight(1, 30);
         tblComanda.setFont(new java.awt.Font("Tahoma", 0, 15));
-        cargarComanda(obProductoMenu.ultimoRegistro());
         activarMesa(FrmMesa.ban);
+        
+        if (FrmComandas.NumPedido != numeroPedido) {
+            cargarComanda(obProductoMenu.ultimoRegistro()-1);
+        }else{
+            cargarComanda(obProductoMenu.ultimoRegistro());
+        }
     }
 
     void cargarComanda(int ped_codigo) {
@@ -90,12 +95,14 @@ public final class FrmPlato extends javax.swing.JFrame {
         tblComanda.setModel(modelo);
 
         String query = "SELECT * FROM detalle_producto_menu WHERE ped_codigo='" + ped_codigo + "';";
-
+        String idPedido="";
         String[] datos = new String[4];
         try {
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
+            while (rs.next()) { 
+                //ibandera
+                idPedido = rs.getString(1);
                 datos[0] = rs.getString(3);
                 datos[1] = rs.getString(6);
                 datos[2] = rs.getString(8) + "0";
@@ -113,7 +120,6 @@ public final class FrmPlato extends javax.swing.JFrame {
         Thread time = new Thread(horaFecha);
         time.start();
     }
-
     public boolean listaProdutos(String seccion) {
         Conexion cn = new Conexion();
         String query = "SELECT prm_nombre FROM producto_menu WHERE seccion ='" + seccion + "' AND prm_disponibilidad='si';";
@@ -139,7 +145,6 @@ public final class FrmPlato extends javax.swing.JFrame {
         }
         return false;
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -235,8 +240,8 @@ public final class FrmPlato extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Observación");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+        jLabel2.setText("Observación (campo opcional)");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 270, -1));
 
         txtListaPlatos.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtListaPlatos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Platos disponibles" }));
@@ -455,16 +460,19 @@ public final class FrmPlato extends javax.swing.JFrame {
         buscaDatosUsuario = null;
         numeroPedido = 0;
         txtObservaciones = null;
-
     }
     private void btnComandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComandasActionPerformed
-        numPedido = numeroPedido;
-        numMesa = FrmMesa.ban;
-        buscaDatosUsuario = empleados.buscarDatosUsuario(Roles.idEmpleado);
-        FrmComandas comandas = new FrmComandas();
-        comandas.setVisible(true);
-        this.setVisible(false);
-        this.removeAll();
+        ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea confirmar la orden?", "Mensaje de Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
+        if (input == 0) {
+            numPedido = numeroPedido;
+            numMesa = FrmMesa.ban;
+            buscaDatosUsuario = empleados.buscarDatosUsuario(Roles.idEmpleado);
+            FrmComandas comandas = new FrmComandas();
+            comandas.setVisible(true);
+            this.setVisible(false);
+            this.removeAll();
+        }
     }//GEN-LAST:event_btnComandasActionPerformed
     private void barActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barActionPerformed
         listaProdutos("bar");
@@ -472,54 +480,61 @@ public final class FrmPlato extends javax.swing.JFrame {
     private void cocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cocinaActionPerformed
         listaProdutos("cocina");
     }//GEN-LAST:event_cocinaActionPerformed
-
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         int fila = tblComanda.getSelectedRow();
+        ImageIcon error = new ImageIcon(getClass().getResource("../assets/icons/error.png"));
         if (fila >= 0) {
             obProductoMenu.actualizaComanda(txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), numeroPedido);
             cargarComanda(numeroPedido);
             limpiar();
         } else {
-            JOptionPane.showMessageDialog(null, "No a seleccionado ningun producto para actualizar");
+            JOptionPane.showMessageDialog(null,"No a seleccionado ningun producto para actualizar","Mensaje",JOptionPane.PLAIN_MESSAGE, error);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
-    void limpiar() {
-        //listaProdutos(""); 
+    void limpiar() { 
         txtCantidad.setSelectedItem("1");
         txtObservaciones.setText("");
-        txtListaPlatos.setSelectedItem("Productos Disponibles");
-//        grupo_seccion.clearSelection();
+        txtListaPlatos.setSelectedItem("Productos Disponibles"); 
     }
     private void quitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarActionPerformed
         int fila = tblComanda.getSelectedRow();
+        ImageIcon error = new ImageIcon(getClass().getResource("../assets/icons/error.png"));
         if (fila >= 0) {
             obProductoMenu.quitaProductoMenu(tblComanda.getValueAt(fila, 0).toString());
             cargarComanda(numeroPedido);
         } else {
-            JOptionPane.showMessageDialog(null, "No a seleccionado ningun producto para quitar");
+            JOptionPane.showMessageDialog(null,"No a seleccionado ningun producto para quitar","Mensaje",JOptionPane.PLAIN_MESSAGE, error);
         }
     }//GEN-LAST:event_quitarActionPerformed
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String seccion = "";
+        ImageIcon alerta = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
         if (bar.isSelected()) {
             seccion = "bar";
         }
         if (cocina.isSelected()) {
             seccion = "cocina";
         }
-        if (obProductoMenu.registarMenu(numeroPedido, txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), seccion)) {
-            cargarComanda(numeroPedido);
-            limpiar();
-        } else {
-            JOptionPane.showMessageDialog(null, "Producto no disponible..");
+        if (txtListaPlatos.getSelectedItem().toString().equals("Platos disponibles")) {
+           JOptionPane.showMessageDialog(null,"Debe Seleccionar un producto..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+        }else{
+            if (obProductoMenu.existeDetallePedido(numeroPedido,txtListaPlatos.getSelectedItem().toString()) == 0) {
+                if (obProductoMenu.registarMenu(numeroPedido, txtListaPlatos.getSelectedItem().toString(), txtObservaciones.getText(), Integer.parseInt(txtCantidad.getSelectedItem().toString()), seccion)) {
+                    cargarComanda(numeroPedido);
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(null,"Producto no disponible..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"El producto ya esta ingresado, Modifique..","Alerta",JOptionPane.PLAIN_MESSAGE, alerta);
+            }
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
-
     private void tblComandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblComandaMouseClicked
         int fila = tblComanda.getSelectedRow();
         grupo_seccion.clearSelection();
-        txtListaPlatos.setActionCommand(tblComanda.getValueAt(fila, 0).toString());
-        txtCantidad.setActionCommand(tblComanda.getValueAt(fila, 1).toString());
+        txtListaPlatos.setSelectedItem(tblComanda.getValueAt(fila, 0).toString());
+        txtCantidad.setSelectedItem(tblComanda.getValueAt(fila, 1).toString());
         txtObservaciones.setText(tblComanda.getValueAt(fila, 3).toString());
     }//GEN-LAST:event_tblComandaMouseClicked
 

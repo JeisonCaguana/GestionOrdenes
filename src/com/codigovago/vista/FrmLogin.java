@@ -48,7 +48,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         txtClave.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         txtClave.setForeground(new java.awt.Color(255, 255, 255));
-        txtClave.setText("Caguana60");
+        txtClave.setText("Caguana13");
         txtClave.setBorder(null);
         txtClave.setCaretColor(new java.awt.Color(255, 255, 255));
         txtClave.setDisabledTextColor(new java.awt.Color(255, 255, 255));
@@ -88,7 +88,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 10, 50, 50));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 20, 40, 50));
 
         FondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/loginIster.JPG"))); // NOI18N
         getContentPane().add(FondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, 910));
@@ -123,7 +123,11 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOlvideClaveActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
+        ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/salir.png"));
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea Sair?", "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
+        if (input == 0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

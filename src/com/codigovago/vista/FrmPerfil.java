@@ -8,6 +8,7 @@ package com.codigovago.vista;
 import com.codigovago.controlador.Roles;
 import com.codigovago.modelo.accesoDatos.Conexion;
 import com.codigovago.modelo.accesoDatos.Empleados;
+import static com.codigovago.vista.FrmMesa.idEmp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,31 +21,26 @@ import javax.swing.JOptionPane;
  *
  * @author JEISON
  */
-public class FrmPerfil extends javax.swing.JFrame {
+public final class FrmPerfil extends javax.swing.JFrame {
 
     /**
      * Creates new form FrnPerfil
      */
     Empleados empleados = new Empleados();
-    Roles Roles = new Roles();
-    
-    Conexion cn = new Conexion();
-
-    public FrmPerfil() {
+    FrmMesa FrmMesa = new FrmMesa();
+        public FrmPerfil() {
         this.setUndecorated(true);
         initComponents();
+        buscarDatosUsuario(FrmMesa.idEmp);
     }
 
-    void gerUsuario() {
-
-    }
-
-    public String buscarDatosUsuario(String correo) {
+    public void buscarDatosUsuario(int emp_codigo) {
+        Conexion cn = new Conexion();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection conexion = cn.getConexion();
         String nombre = "";
-        String query = "SELECT emp_nombre,emp_apellido FROM empleado WHERE emp_correo = '" + correo + "' LIMIT 1;";
+        String query = "SELECT emp_nombre,emp_apellido,emp_id,emp_telefono,emp_direccion,emp_correo FROM empleado WHERE emp_codigo = '" + emp_codigo + "' LIMIT 1;";
         try {
             ps = conexion.prepareStatement(query);
             rs = ps.executeQuery();
@@ -55,8 +51,12 @@ public class FrmPerfil extends javax.swing.JFrame {
                     nombre += primerNombre.nextElement() + " " + primerApellido.nextElement();
                     break;
                 }
+                lblNombre.setText(   "Nombre: "+nombre);
+                lblCedula.setText(   "Cédula: "+rs.getString(3));
+                lblTelefono.setText( "Teléfono: "+rs.getString(4));
+                lblDireccion.setText("Dirección: "+rs.getString(5));
+                lblCorreo.setText(   "Correo: "+rs.getString(6));
             }
-            return nombre;
         } catch (SQLException ex) {
             ex.getMessage();
         } finally {
@@ -66,19 +66,7 @@ public class FrmPerfil extends javax.swing.JFrame {
                 e.getMessage();
             }
         }
-        return nombre;
     }
-
-    
-    
-    void datos(){
-        lblNombre.setText("Nombre: "+empleados.buscarNombreApellidoEmpleado(Roles.idEmpleado));
-        lblCedula.setText("Cedula: "+empleados.buscarIdEmpleado(Roles.idEmpleado));
-        lblTelefono.setText("Telefono: "+empleados.buscarTelefonoEmpleado(Roles.idEmpleado));
-        lblDireccion.setText("Dirección: "+empleados.buscarDireccionEmpleado(Roles.idEmpleado));
-        lblCorreo.setText("Correo: "+empleados.buscarCorreoEmpleado(Roles.idEmpleado));
-    }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -116,13 +104,13 @@ public class FrmPerfil extends javax.swing.JFrame {
 
         lblCedula.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblCedula.setForeground(new java.awt.Color(255, 255, 255));
-        lblCedula.setText("Cédula: 1724196423");
-        getContentPane().add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
+        lblCedula.setText("Cédula: 099999999");
+        getContentPane().add(lblCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, -1));
 
         lblNombre.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre");
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 180, 20));
+        lblNombre.setText("Nombre: Admin");
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 270, 20));
 
         lblTelefono.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblTelefono.setForeground(new java.awt.Color(255, 255, 255));

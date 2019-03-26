@@ -33,24 +33,24 @@ public final class FrmComandas extends javax.swing.JFrame {
     Conexion cn = new Conexion();
     Connection conexion = cn.getConexion();
     Roles Roles = new Roles();
-    
+     public static int NumPedido;
+     public static int numMesa;
     public FrmComandas() {
         this.setUndecorated(true);
         initComponents();
-        componentes();
+        componentes(); 
 
     }
 
     void componentes() {
-        lblPedido.setText("# 000" + FrmPlato.numPedido);
-        lblMesa.setText("" + FrmPlato.numMesa);
+        lblPedido.setText("N# 000" + FrmPlato.numPedido);
+        lblMesa.setText("N# " + FrmPlato.numMesa );
         horaComanda();
         fechaComanda();
         lblMesero.setText("" + FrmPlato.buscaDatosUsuario);
         comandaBar(FrmPlato.numPedido,"bar");
         comandaCocina(FrmPlato.numPedido,"cocina");
     }
-
     void comandaCocina(int ped_codigo, String seccion) {
         comandaCocina.isCellSelected(1, 1);
         DefaultTableModel modelo = new DefaultTableModel();
@@ -76,7 +76,6 @@ public final class FrmComandas extends javax.swing.JFrame {
             Logger.getLogger(FrmPlato.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     void comandaBar(int ped_codigo, String seccion) {
         comandaBar.isCellSelected(1, 1);
         DefaultTableModel modelo = new DefaultTableModel();
@@ -102,7 +101,6 @@ public final class FrmComandas extends javax.swing.JFrame {
             Logger.getLogger(FrmPlato.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     void horaComanda() {
         hora = new Hora(lblHoraComanda);
         Thread time = new Thread(hora);
@@ -119,7 +117,6 @@ public final class FrmComandas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCancelar = new javax.swing.JButton();
         btnMinimizar = new javax.swing.JButton();
         btnCuenta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -135,20 +132,11 @@ public final class FrmComandas extends javax.swing.JFrame {
         comandaCocina = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
         comandaBar = new javax.swing.JTable();
+        lblObservaciones = new javax.swing.JLabel();
         FondoOrden = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCancelar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/ModificarComanda.png"))); // NOI18N
-        btnCancelar.setContentAreaFilled(false);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 320, 70));
 
         btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/icons/max.png"))); // NOI18N
         btnMinimizar.setBorderPainted(false);
@@ -179,6 +167,11 @@ public final class FrmComandas extends javax.swing.JFrame {
         btnAgregar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/añadir.png"))); // NOI18N
         btnAgregar.setContentAreaFilled(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 210, 60));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
@@ -245,19 +238,16 @@ public final class FrmComandas extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 200, 440, 460));
 
+        lblObservaciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObservaciones.setForeground(new java.awt.Color(255, 255, 255));
+        lblObservaciones.setText("Observaciones");
+        getContentPane().add(lblObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 700, 1240, 40));
+
         FondoOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/codigovago/assets/Comanda3.png"))); // NOI18N
         getContentPane().add(FondoOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1390, 790));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        FrmPlato plato = new FrmPlato();
-        plato.setVisible(true);
-        this.setVisible(false);
-        FrmComandas fn = new FrmComandas();
-        fn = null;
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
         ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/alerta.png"));
@@ -269,14 +259,18 @@ public final class FrmComandas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMinimizarActionPerformed
 
     private void btnCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaActionPerformed
-        Roles.rolMesero();
-        this.setVisible(false); 
+        JOptionPane.showMessageDialog(null,"Las comandas fueron enviadas..");
+            Roles.rolMesero();
+            this.setVisible(false); 
     }//GEN-LAST:event_btnCuentaActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        lblObservaciones.setText("Observaciones: "+txtDescripcion.getText());
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoOrden;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCuenta;
     private javax.swing.JButton btnMinimizar;
     private javax.swing.JTable comandaBar;
@@ -289,6 +283,7 @@ public final class FrmComandas extends javax.swing.JFrame {
     private javax.swing.JLabel lblHoraComanda;
     private javax.swing.JLabel lblMesa;
     private javax.swing.JLabel lblMesero;
+    private javax.swing.JLabel lblObservaciones;
     private javax.swing.JLabel lblPedido;
     private javax.swing.JTextArea txtDescripcion;
     // End of variables declaration//GEN-END:variables

@@ -39,8 +39,7 @@ public final class FrmMesa extends javax.swing.JFrame {
         Roles = null;
         horaFecha = null;
         btnUsuario = null;
-        nomMesero = "";
-        ban = 0; 
+        nomMesero = ""; 
     }
 
     void horaFecha() {
@@ -531,7 +530,7 @@ public final class FrmMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMesa15ActionPerformed
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         ImageIcon salir = new ImageIcon(getClass().getResource("../assets/icons/salir.png"));
-        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea serrar sesión?", "Serrar Sessión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro desea Cerrar sesión?", "Cerrar Sessión", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, salir);
         if (input == 0) {
             Roles.index();
             this.setVisible(false); 
@@ -553,8 +552,8 @@ public final class FrmMesa extends javax.swing.JFrame {
         cargarMesa(19); 
     }//GEN-LAST:event_btnMesa19ActionPerformed
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
-        FrmPerfil perfil = new FrmPerfil();
         idEmp = Roles.idEmpleado;
+        FrmPerfil perfil = new FrmPerfil();
         perfil.setVisible(true); 
     }//GEN-LAST:event_btnUsuarioActionPerformed
     private void btnMesa21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesa21ActionPerformed
